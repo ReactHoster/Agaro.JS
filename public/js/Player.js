@@ -71,6 +71,10 @@ class Player {
 
         // strokeWeight(4)
 
+        // console.log(this.pos.x, this.pos.y)
+
+        // test(this.pos.x/100, this.pos.y/100)
+
         // Set skin if not null
         if (this.skin !== 'random_color') {
             const pos_x = this.pos.x

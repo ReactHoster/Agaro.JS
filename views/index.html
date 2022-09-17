@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="js/p5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 
+    <script src="js/Radar.js"></script>
     <script src="js/Skins.js"></script>
     <script src="js/ScoreBoard.js"></script>
     <script src="js/Player.js"></script>
@@ -31,6 +33,15 @@
     <h3>Players: <span id="count_players"></span></h3>
     <ul id="players_names">
     </ul>
+</div>
+
+<div id="radar">
+    <i>
+        <i></i>
+    </i>
+    <div id="guides">
+        <div class="line"></div>
+    </div>
 </div>
 
 <div class="game-menu" style="display: none;" id="menu">
