@@ -20,6 +20,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const colors = require("colors")
 
+
 const {
   BLOCKS_COUNT,
   BLOBS_COUNT
@@ -67,6 +68,7 @@ require("./lib/socket.js")(io, players, field, blobs)
 // EXPRESS //
 
 app.use(express.static('public'));
+
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/views/index.html")

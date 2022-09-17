@@ -4,9 +4,11 @@
  */
 class Player {
 
-    constructor(nick, id, color, bcolor, x, y) {
+    constructor(nick, id, color, bcolor, x, y, score, skin) {
         this.radius = PLAYER_RADIUS
         this.Radius = PLAYER_RADIUS / 2
+        this.x = x
+        this.y = y
 
         if (x && y) {
             this.pos = createVector(x, y)
@@ -27,6 +29,9 @@ class Player {
         this.BORDER_COLOR = bcolor
 
         this.angle = Math.random() * TWO_PI
+
+        this.score = score
+        this.skin = Skins.if_skin_exists(skin)?skin:null
     }
 
     /**
@@ -58,9 +63,28 @@ class Player {
      * @function
      */
     draw() {
-        fill(this.COLOR)
-        stroke(this.BORDER_COLOR)
+
+        // image(img, this.pos.x-this.radius/2, this.pos.y-this.radius/2, this.radius, this.radius)
+        // noFill();
+        // rect(25,25,100,100);
+
+
         strokeWeight(4)
+
+        // Set skin if not null
+        console.log(this.skin)
+        if (this.skin !== null && this.skin !== 'random_color') {
+            const pos_x = this.pos.x
+            const pos_y = this.pos.y
+            const radius = this.radius
+            const score = parseInt(this.radius*2)
+
+            image(skins[this.skin], (pos_x-radius), (pos_y-radius), score, score)
+        }
+        else {
+            fill(this.COLOR)
+            stroke(this.BORDER_COLOR)
+        }
 
         beginShape()
         this.makePoints()
@@ -77,6 +101,7 @@ class Player {
         textSize(this.Radius / 1.5)
         text(this.nick, this.pos.x, this.pos.y)
     }
+
 
     /**
      * Locates player to the mouse position

@@ -2,6 +2,7 @@ let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
 let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 
 const PLAYER_RADIUS = 16
+// const FIELD_SIZE = 1000
 const FIELD_SIZE = 10000
 const GRID_SIZE = 40
 
@@ -26,6 +27,17 @@ let font
 
 // Create socket and conect
 let socket = io()
+
+function preload(){
+    skins = {
+        default: null,
+        clown: loadImage('skins/clown.png'),
+        kraken: loadImage('skins/kraken.png'),
+        dinosaur: loadImage('skins/dinosaur.png'),
+        shark: loadImage('skins/shark.png'),
+    }
+    // img = loadImage('https://configs-web.agario.miniclippt.com/live/v15/10216/tiki_king.png')
+}
 
 function setup() {
     // Create canvas (obvious)
@@ -96,8 +108,12 @@ function draw() {
         blobs[i].draw()
 
         if (players[socket.id].eats(blobs[i])) {
+            // Update player score
+            const new_score = parseInt(players[socket.id]['Radius']*2)
+            players[socket.id]['score'] = new_score
+
             socket.emit("eatBlob", {
-                player_score: parseInt(players[socket.id]['Radius']*2),
+                player_score: new_score,
                 i
             })
             blobs.splice(i, 1)
