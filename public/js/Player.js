@@ -69,11 +69,10 @@ class Player {
         // rect(25,25,100,100);
 
 
-        strokeWeight(4)
+        // strokeWeight(4)
 
         // Set skin if not null
-        console.log(this.skin)
-        if (this.skin !== null && this.skin !== 'random_color') {
+        if (this.skin !== 'random_color') {
             const pos_x = this.pos.x
             const pos_y = this.pos.y
             const radius = this.radius
