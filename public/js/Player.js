@@ -18,7 +18,7 @@ class Player {
 
         this.velocity = createVector(0, 0)
         this.mass = PI * this.radius * this.radius
-        this.speed = 10 * Math.pow(this.mass, -0.2)
+        this.speed = 20 * Math.pow(this.mass, -0.2)
         this.points = []
 
         this.nick = nick
